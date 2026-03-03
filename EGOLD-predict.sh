@@ -21,10 +21,10 @@ if [ -z $refpath ] || [ -z $sgRNA] || [ -z $feature] || [ -z $editor] || [ -z $m
 fi
 ref=`echo $refpath|awk -F"/" '{print $NF}'`
 $binpath/finder.mismatch $refpath $sgRNA  9 $sgRNA.all.position $threads
-/mnt/ZuoStorage3/fenghu/soft/miniconda3/bin/perl $binpath/mismatch.pl $sgRNA.all.position >$sgRNA.all.position.mismatch
+perl $binpath/mismatch.pl $sgRNA.all.position >$sgRNA.all.position.mismatch
 less $sgRNA.all.position.mismatch|awk '{print $1"\t"$2"\t"$3}' >$sgRNA.off
 less $sgRNA.all.position.mismatch|awk '{print $2"\t"$3}' |sort -u >$sgRNA.target.sortu
-/mnt/ZuoStorage3/fenghu/soft/miniconda3/bin/perl $binpath/deal.mismatch2ai.pl $sgRNA.target.sortu $sgRNA.target.sortu.ai
+perl $binpath/deal.mismatch2ai.pl $sgRNA.target.sortu $sgRNA.target.sortu.ai
 
 mkdir tempp
 cd tempp
@@ -39,10 +39,10 @@ paste dnase.$sgRNA.off.add elk4.$sgRNA.off.add h3k27ac.$sgRNA.off.add h3k36me3.$
 perl $binpath/add.epigenetics.l50.pl  $feature/hg38.ATAC.bed $feature/hg38.methylation.bed $feature/hg38.293t.fpkm.pos ../$sgRNA.off >$sgRNA.off.add2
 cd ../
 less $sgRNA.target.sortu.ai |awk '{a=$2;b=$1;$1=a;$2=b;for(i=1;i<NF;i++){printf $i"\t"}print $NF}' >$sgRNA.target.sortu.ai2
-nohup perl $binpath/combine.epigenetics-histone.pl tempp/$sgRNA.off.add2 tempp/$sgRNA.off.add.histone.l50 $sgRNA.target.sortu.ai2 $sgRNA.off >$sgRNA.off.mismatch.epigenetics &
-conda activate py38
+perl $binpath/combine.epigenetics-histone.pl tempp/$sgRNA.off.add2 tempp/$sgRNA.off.add.histone.l50 $sgRNA.target.sortu.ai2 $sgRNA.off >$sgRNA.off.mismatch.epigenetics
+
 python $binpath/sgoff-label-pos-predict.py $models/$editor.indel.snv.mismatch2.l50_best_model.joblib $sgRNA.off.mismatch.epigenetics $editor-$sgRNA.predict
-conda deactivate
+
 
 
 
