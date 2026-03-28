@@ -1,7 +1,9 @@
 Here, we present the Endogenous Genome-wide Off-target Library Detection Sequencing (EGOLD) method for streamlined assessment of genome-wide off-target effects induced by genome editing tools. 
 
 Need:
+
 Bio::Tools::dpAlign;
+
 python = 3.8.18.
 
 Run：
