@@ -1,1 +1,0 @@
-python EGOLD-predict.py site1.rAPOBEC1-nCas9.indel.snv.mismatch2.l50.uniq_best_model.joblib  input  output
