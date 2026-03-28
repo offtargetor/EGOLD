@@ -5,6 +5,7 @@ Bio::Tools::dpAlign
 python = 3.8.18
 
 Run：
+
 (1): bash EGOLD.sh  -r <refpath> -p <pampath> -l <sglen> -s <side> -e <ecpospath> -b <binpath> -m <acstart> -t <threads>
 -r	The absolute path of reference.
 -p	The absolute path of pam.
@@ -17,3 +18,5 @@ Run：
 -t	The number of threads.
 
 (2): cat results/bb*.num |sed "~s/.bed//" >name.out
+
+(3): perl bin/add.sg.pl name.out >name.out.sgRNA
