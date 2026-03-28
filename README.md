@@ -9,7 +9,7 @@ python = 3.8.18.
 
 Run：
 
-(1): bash EGOLD.sh  -r <refpath> -p <pampath> -l <sglen> -s <side> -e <ecpospath> -b <binpath> -m <acstart> -t <threads>
+(1): bash EGOLD.sh  -r \<refpath\> -p \<pampath\> -l \<sglen\> -s \<side\> -e \<ecpospath\> -b \<binpath\> -m \<ac start\> -t \<threads\>
 
 -r	The absolute path of reference.
 
